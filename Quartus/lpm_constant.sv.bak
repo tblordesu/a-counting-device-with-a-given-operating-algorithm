@@ -1,0 +1,10 @@
+module lpm_constant #(
+		parameter WIDTH = 5,
+		parameter VALUE = 5'd20
+	)(
+		output logic [WIDTH-1:0] result
+	);
+
+    assign result = VALUE;
+
+endmodule

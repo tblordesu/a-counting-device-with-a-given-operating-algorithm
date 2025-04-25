@@ -1,0 +1,30 @@
+`timescale 1ns/100ps
+
+module lab6_tb;
+    logic clk;
+    logic reset;
+    logic [4:0] result;
+
+    //Подключаем основной модуль
+    lab6 uut (
+        .clk(clk),
+        .reset(reset),
+        .result(result)
+    );
+
+    always #50 clk = ~clk;  //Один такт длится 100 нс
+
+    initial begin
+        // Инициализация
+        $dumpfile("lab6.vcd");       // VCD-файл для просмотра в GTKWave
+        $dumpvars(0, lab6_tb);       // Сохраняем все сигналы
+
+        clk = 0;
+        reset = 1;
+        #20;                         // 20 нс держим сброс
+        reset = 0;
+
+        #6000;                       // работа 6000 нс
+        $finish;
+    end
+endmodule

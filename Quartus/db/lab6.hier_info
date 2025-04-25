@@ -1,0 +1,54 @@
+|lab6
+clk => clk.IN2
+reset => reset.IN1
+result[0] <= lpm_mux:result_mux.result
+result[1] <= lpm_mux:result_mux.result
+result[2] <= lpm_mux:result_mux.result
+result[3] <= lpm_mux:result_mux.result
+result[4] <= lpm_mux:result_mux.result
+
+
+|lab6|lpm_counter:counter_inst
+clk => q[0]~reg0.CLK
+clk => q[1]~reg0.CLK
+clk => q[2]~reg0.CLK
+clk => q[3]~reg0.CLK
+clk => q[4]~reg0.CLK
+reset => q[0]~reg0.ACLR
+reset => q[1]~reg0.ACLR
+reset => q[2]~reg0.ACLR
+reset => q[3]~reg0.ACLR
+reset => q[4]~reg0.ACLR
+q[0] <= q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= q[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[3] <= q[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[4] <= q[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab6|d_flipflop:pause_ff
+clk => q~reg0.CLK
+reset => q~reg0.ACLR
+d => q~reg0.DATAIN
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab6|lpm_mux:result_mux
+sel => Decoder0.IN0
+data0[0] => result.DATAA
+data0[1] => result.DATAA
+data0[2] => result.DATAA
+data0[3] => result.DATAA
+data0[4] => result.DATAA
+data1[0] => result.DATAB
+data1[1] => result.DATAB
+data1[2] => result.DATAB
+data1[3] => result.DATAB
+data1[4] => result.DATAB
+result[0] <= result.DB_MAX_OUTPUT_PORT_TYPE
+result[1] <= result.DB_MAX_OUTPUT_PORT_TYPE
+result[2] <= result.DB_MAX_OUTPUT_PORT_TYPE
+result[3] <= result.DB_MAX_OUTPUT_PORT_TYPE
+result[4] <= result.DB_MAX_OUTPUT_PORT_TYPE
+
+
